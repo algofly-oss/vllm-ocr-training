@@ -1,0 +1,4 @@
+**/__pycache/
+**/.ipynb_checkpoints/
+dataset/
+weights/
