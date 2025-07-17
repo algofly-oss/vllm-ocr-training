@@ -1,0 +1,20 @@
+services:
+  vllm_ocr_jupyterlab:
+    image: nvcr.io/nvidia/pytorch:24.07-py3
+    container_name: vllm_ocr_jupyterlab
+    ipc: host
+    ports:
+      - 8780:8780
+    volumes:
+      - ./:/notebooks
+    working_dir: /notebooks
+    command: >
+      bash -c "jupyter lab --ip=0.0.0.0 --port=8780 --allow-root --no-browser --NotebookApp.token=''"
+    restart: always
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

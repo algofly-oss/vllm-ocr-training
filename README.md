@@ -8,4 +8,4 @@ Steps to Run:
 docker compose up
 ```
 
-After running the containers follow the jupyter lab url in the terminal.
+After running the containers follow http://localhost:8780
