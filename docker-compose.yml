@@ -18,3 +18,16 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+
+  vllm_ocr_annotator:
+    build:
+      context: ./annotator
+      dockerfile: Dockerfile
+    image: vllm_ocr_annotator
+    container_name: vllm_ocr_annotator
+    ports:
+      - 8000:8000
+    volumes:
+      - ./annotator:/app
+      - ./annotator/static/images:/app/static/images # place your images here
+    restart: always
